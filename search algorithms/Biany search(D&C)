@@ -14,3 +14,17 @@ int binary_search(int s, int e, int A[], int x)
     else
         return binary_search(m+1, e, A, x);
 }
+
+
+
+/*********************************************************************************/
+//performance analysis
+/*
+
+T(n) =    1       for n = 1
+       T(n/2)+1   otherwise
+
+T(n) = log n
+
+
+*/
