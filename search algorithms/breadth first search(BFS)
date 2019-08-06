@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <vector>
+#include <queue>
+#include <algorithms>
+
+using namespace std;
+
+vector<int> edge[10001];
+bool visit[10001];
+
+void initVisit(){
+      for(int i = 0; i < 10001; i++){
+              visit[i] = false;
+      }
+}
+
+void bfs(int s)
+{
+      queue<int> q;
+      int now, k, next;
+      
+      q.push(s);
+      visit[s] = true;
+      while (!q.empty()){
+              now = q.front();
+              q.pop();
+              printf("%d ",now);
+              for ( k = 0; i < edge[now].size();k++){
+                    next = edge[now][k];
+                    if( visit[next] == false){
+                        visit[next] = true;
+                        q.push(next);
+                     }
+               }
+       }
+}
+
+int main()
+}
+    initVisit();
+    bfs(s);
+    
+    return 0;
+}
+
