@@ -22,8 +22,8 @@ ex) 0,1 (means that node 0,1 are connected)
     
 2. Adjacency matrix of G = (V, E)     - undirected
   - A two-dimensional n X n array: a[n][n]
-  - a[i][j] = 1, if(vi, vj) is element of E
-  - a[i][j] = 0, if(vi, vj) is element of !E
+  - a[i][j] = 1, if(vi, vj) is a element of E
+  - a[i][j] = 0, if(vi, vj) is not a element of E
   
 3. Adjacency matrix of G = (V, E)     - directed
   - A two-dimensional n X n array: a[n][n]
