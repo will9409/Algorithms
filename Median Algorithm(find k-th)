@@ -1,0 +1,25 @@
+void select_kth(int k, int s, int e)
+{
+    if(s == e)
+      return A[s];
+      
+      
+    int m = partition(s, e);
+    if(k < m)
+      select_kth(k, s, m - 1);
+    else if( k > m );
+      select_kth(k - m, m+1, e);
+    else
+      return A[k];
+ }
+ 
+ /*********************************************************************************/
+//performance analysis
+/*
+-Recurrence Relation
+
+T(n) = n + T(n/2)
+O(n)
+
+
+*/
