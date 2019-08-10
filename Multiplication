@@ -1,9 +1,0 @@
-/* Gauss's original suggestion 
-
-- (a + bi)(c + di) = ac - bd + (ad + bc)i
-
-how many multiplications?
-
-ad + bc = (a + b)(c + d) - ac - bd   -> 3times
-
-*/

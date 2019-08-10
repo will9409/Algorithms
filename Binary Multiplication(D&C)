@@ -1,0 +1,55 @@
+psudo code
+
+void multiply (int u, int v)
+{
+    int n = min(digit of u, digit of v)
+    if( n is small enough )
+        return u * v;
+        
+        
+    int s = n/2;
+    int w = u/(2^s);
+    int x = u%(2^s);
+    int y = v/(2^s);
+    int z = v%(2^s);
+    
+    
+    int r = multiply( w + x, y + z);
+    int p = multiply( w, y);
+    int q = multiply( x, z);
+    
+    
+    return p * (2^2s) + (r - p - q) * (2^s) + q;
+
+}
+
+/* In complex multiplication 
+
+- (a + bi)(c + di) = ac - bd + (ad + bc)i
+
+how many multiplications?
+
+ad + bc = (a + b)(c + d) - ac - bd   -> 3times
+
+
+Two binary numbers x & y with length n
+
+x = [Xl][Xr] = 2^s*Xl + Xr
+y = [Yl][Yr] = 2^s*Yl + Yr, where s = n/2 (round up)
+
+xy = (2^s*Xl + Xr)(2^s*Yl + Yr)
+   = 2^s*XlYl + 2^s(XlYr+ XrYl) + XrYr
+- T(n) = 4T(n/2) + O(n)
+
+     XlYr + XrYl = (Xl + Xr)(Yl + Yr) - XlYl - XrYr
+- T(n) = 3T(n/2) + O(n)
+
+Performance analysis
+
+- Recurrence relation
+  T(n) = 3T(n/2) + O(n)
+  
+  T(n) = O(n^log (2) 3)
+
+
+*/
