@@ -1,0 +1,26 @@
+int Champion(int s, int e)
+{
+    // Degenerate case
+    if( s == e )
+       return s;
+    
+    // Divide
+    int m = (s + e)/2;
+    
+    // Conquer
+    Lwinner = Champion( s , m);
+    Rwinner = Champion( m+1, e);
+    
+    // Combine
+    return Winner( Lwinner, Rwinner );
+    
+}
+
+/*********************************************************************************/
+//performance analysis
+/*
+
+T(n) = 2T(n/2) + O(1)
+     = O(n)
+
+*/
