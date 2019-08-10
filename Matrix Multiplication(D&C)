@@ -1,0 +1,66 @@
+Multiplying two matrices: Z = XY
+ - X & Y : n x n matrices
+ 
+ 
+ void mat_mult(int **z, int **y, int **y, int n)
+ {
+    int i, j ,k;
+    
+    for(i = 0; i < n; i++)
+        for(j = 0; j < n; j++)
+            for(k = 0, z[i][j] = 0; k < n; k++)
+                z[i][j] += X[i][k] * Y[k][j];
+  }
+  
+  
+  
+  Improve the performance using DnC
+  - Divide X & Y int 2 x 2 groups
+  
+      A   B                E   F
+  X =                Y = 
+      C   D     ,          G   H
+      
+      
+           |A   B||E   F|    |AE + BG    AF + BH|
+  Z = XY = |     ||     |  = 
+           |C   D||G   H|    |CE + DG    CF + DH|   
+    
+  - 8(n/2) x (n/2) multiplications
+  - Matrix addition -> O(n^2)
+  
+  P1 = A(F-H)
+  P2 = (A+B)H
+  P3 = (C+D)E
+  P4 = D(G-E)
+  P5 = (A+D)(E+H)
+  P6 = (B-D)(G+H)
+  P7 = (A-C)(E+F)
+  
+       |AE+BG    AF+BH|
+  XY = |              |
+       |CE+DG    CF+DH|
+   
+       |P5+P4-P2+P6       P1+P2|
+      =|                       |
+       |   P3+P4    P1+P5-P3-P7|
+  
+  
+  T(n) = 8T(n/2) + O(n^2)
+       = O(n^3)
+  
+  Improvement of performance
+  - 7(n/2) x (n/2) multiplications -> 7T(n/2)
+  - Matrix addition -> O(n^2)
+  
+        T(n) = 7T(n/2) + O(n^2)
+        
+             = O(n^log(2) 7)
+             = O(n^2.81)
+  
+  
+  
+  
+  
+  
+  
