@@ -1,0 +1,26 @@
+undirected graphs
+
+
+Type            Search          Start         Return          Function            Meaning                 Performance
+
+Array           Search(A,x)     A[0]          T/F or index    Linear Search       Find x in an array A    O(n)
+                Search(A,x)     A[m]          T/F or index    Binary Search       Find x in an array A    O(log n)
+
+
+Linked list     Search(L,x)     head          T/F or node     Linear search       Find x in a list A      O(log n)
+
+
+     Binary   
+     Search     Search(T,x)     root          T/F or node     Binary search       Find x in a tree T      O(log n)
+     Tree
+Tree
+     Ordinary   Search(T)       root          List of         Inorder/Preorder    Report all vertices
+     Tree       Traversal                     reachable       /Postorder          reachable from          O(n)
+                                              vertices        DFS/BFS             root node
+
+Graph           Search(G,v)    any v          List of                             Report all vertices
+                Traversal                     reachable       DFS/BFS             reachable from v in     O(n) + O(|E|)
+                                              vertices                            a graph G
+                                            
+
+non-searchable data structure: stack, queue, heap
