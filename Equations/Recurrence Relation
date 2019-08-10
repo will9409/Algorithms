@@ -1,0 +1,13 @@
+Recurrence relation
+- An equation in which each term of the sequence is defined as a function of the preceding terms
+
+- Example
+  T(n) = T(n/2) + 1
+  T(n) = 2T(n/2) + n
+  T(n) = T(n-1) + T(n-2)
+  T(n) = T(n/2) + n
+  
+- Solutions
+  1. Characteristic equation
+  2. Repeated substitution of telescoping
+  3. Master Theorem
