@@ -1,3 +1,9 @@
+Binary search:
+- Let A = { a1, a2, ... , an} be a list of elements which are sorted in nondecreasing order
+- Determine whether x is in A or not. If x is in A, then find i such that ai = x.
+
+
+
 int binary_search(int s, int e, int A[], int x)
 {
     if( s == e )
