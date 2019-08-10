@@ -1,0 +1,78 @@
+Graph
+- An abstract representation of a set of objects where some pairs of the objects are connected by links
+- The interconnected objects are called vertices, and the links that connect some pairs of vertices are called edges
+
+Graph G = (vertices V, edges E)
+
+The type of a graph
+- An undirected graph
+  {v, w}  =  {w, v}
+- A directed graph
+  (v, W) !=  (w, v)
+  
+ 
+Representation of a graph
+1. Edge list
+  - A list of edges
+  - available on many coding probles
+ex) 0,1 (means that node 0,1 are connected)
+    0,2
+    0,3
+    1,2
+    
+2. Adjacency matrix of G = (V, E)     - undirected
+  - A two-dimensional n X n array: a[n][n]
+  - a[i][j] = 1, if(vi, vj) is element of E
+  - a[i][j] = 0, if(vi, vj) is element of !E
+  
+3. Adjacency matrix of G = (V, E)     - directed
+  - A two-dimensional n X n array: a[n][n]
+  - a[i][j] = 1, if<vi, vj> is element of E
+  - a[i][j] = 0, if<vi, vj> is element of !E
+  
+4. Adjacency list of G = (V, E)       - directed, undirected
+  - adjLists[n]
+  - adjLists[i] is a pointer to the first node in the adjacency list for vertex i
+ 
+ 
+ Performance
+  - Sparse graph
+    |V| = n
+    |E| = O(n)
+    
+  - Dense(complete) graph
+    |V| = n
+    |E| = O(n^2)
+
+
+
+                       Space complexity                       Time complexity
+                  Sparse Graph    Complete Graph        Sparse Graph   Complete Graph
+Adjacency list         O(n)           O(n^2)                 O(n)           O(n^2)
+Adjacency matrix       O(n^2)         O(n^2)                 O(n^2)         O(n^2)
+
+
+Classification of graph algorithm   
+Graph
+- DFS
+  1. Connected component              (undirected)
+  2. Spanning tree                    (undirected)
+  3. Biconnected component            (undirected)
+  4. Strongly connected component     (directed) + Previsit & Postvisit, Types of edges, Directed acyclic graph
+  
+- BFS
+  1. Single-source Shortest path      (direct weighted),(undirect weighted)
+  2. All-pairs shorted path           (direct weighted),(undirect weighted)         
+  
+- Greedy
+  1. prim                             (direct weighted),(undirect weighted)
+  2. kruskal                          (direct weighted),(undirect weighted)
+          
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
