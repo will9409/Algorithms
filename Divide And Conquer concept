@@ -1,4 +1,4 @@
-void function(int x, int y)
+void DnC(int x, int y)
 {
 
     // Degenerate case
@@ -14,3 +14,26 @@ void function(int x, int y)
     // Combine
     /* when each called functions end, combine results and end the function */
 }
+
+
+/*********************************************************************************/
+//performance analysis
+/*
+
+T(n) : time complexity of DnC() for n inputs
+g(n) : for small input
+f1(n): for Divide()
+f2(n): for COMBINE()
+
+
+               g(n),        for small n
+T(n) = 
+       2T(n/2)+f1(n)+f2(n), otherwise
+
+
+               g(n),        for small n
+T(n) = 
+          aT(n/b)+O(n^d),   otherwise
+
+
+*/
