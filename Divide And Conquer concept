@@ -2,11 +2,15 @@ void function(int x, int y)
 {
 
     // Degenerate case
+    /* this function would be called repeatedly, so if case matches, function ends
     
     // Divide
+    /* divide cases */
+    
     
     // Conquer
+    /* when degenerating functions, save results */
     
     // Combine
-    
+    /* when each called functions end, combine results and end the function */
 }
