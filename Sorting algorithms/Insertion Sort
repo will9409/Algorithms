@@ -33,6 +33,15 @@ void main()
 //performance analysis
 /*
 
+Best case = O(n)     -> already sorted, compare time: n-1
 
+Worst case = O(n^2)  -> sorted as reversed order
+>> compare :(i = 1; n-1; i++)sigma i = n(n - 1)/2 = O(n^2)
+>> move    :n(n - 1)/2 + 2(n - 1) = O(n^2)
+
+Average case = O(n^2)
+
+**
+highly effective when data are already sorted
 
 */
