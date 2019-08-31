@@ -1,1 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE 10000
+#define SWAP(x, y, t) ( (t)=(x), (x)=(y), (y)=(t) )
 
+int list[MAX_SIZE];
+int n;
+
+void bubble_sort(int list[], int n)
+{
+	int i, j, temp;
+	for(i=n-1; i>0; i--){
+		for(j=0; j<i; j++)
+			if(list[j]>list[j+1]) // swap when list[j] > list[j+1]
+				SWAP(list[j], list[j+1], temp);
+	}
+}
+
+
+void main()
+{
+	int i;
+	n = MAX_SIZE;
+	for(i=0; i<n; i++)// 난수 생성 및 출력
+		list[i] = rand()%n;// 난수 발생 범위 0~n
+	bubble_sort(list, n);// 선택 정렬 호출
+	for(i=0; i<n; i++)
+		printf("%d\n", list[i]);// 정렬 결과 출력
+}
+
+/*********************************************************************************/
+//performance analysis
+/*
+
+compare : n(n - 1)/2 = O(n^2)     -> Worst case, Best case, Average case have same compare time
+move : Worst case   = 3 * compare time     (sorted as reversed order)
+       Best case    = 0                    (already sorted)
+       Average case = O(n^2)
+       
+**
+too much move of records
+>> move time needs more time than compare
+
+*/
