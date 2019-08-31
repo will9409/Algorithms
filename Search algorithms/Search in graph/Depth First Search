@@ -1,0 +1,79 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+vector<int> edge[10001];
+vector<int> DAGedge[10001];
+bool visit[10001];
+
+void dfs(int v, vector<int> edges[])
+{
+	if(visit[v] == true)
+		return;
+
+	printf("%d ", v);
+	visit[v] = true;
+	for(int i = 0; i < edges[v].size(); i++){
+		dfs(edges[v][i],edges);
+	}
+}
+
+void edgeReverse(int v){
+	for(int i = 0; i < edge[v].size(); i++)
+		DAGedge[edge[v][i]].push_back(v);
+}
+
+void edgePrint(int v, vector<int> edges[]){
+	for(int i = 0; i < edges[v].size(); i++)
+		printf("%d %d\n",v,edges[v][i]);
+}
+
+void initVisit()
+{
+	for(int i = 0; i < 10001; i++)
+		visit[i] = false;
+}
+
+int main()
+{
+	int n, m, s, u, v;
+	scanf("%d %d %d", &n, &m, &s);
+	for(int i = 0; i< s; i++){
+		scanf("%d %d", &u, &v);
+		edge[u].push_back(v);  // G
+	}
+	for(int i = 0; i < n; i++)
+		sort(edge[i].begin(), edge[i].end());
+
+	initVisit();
+	
+	for(int i = 0; i < n; i++){
+		if(visit[i] == false){
+			dfs(i,edge);
+		}
+	}
+
+	// Strongly Connected Component to Directed Acyclic Graph
+	// generate G(r)
+	for(int i = 0; i < n; i++)
+	{
+		edgeReverse(i);
+	}
+
+	
+	for(int i = 0; i < n; i++)
+	{
+		edgePrint(i,DAGedge);
+	}
+
+	initVisit();
+
+	// if you DFS in G(r) and reverse direction again, you can get DAG
+	for(int i = 0; i < n; i++)
+	{
+		dfs(i,DAGedge);
+	}
+
+}
