@@ -1,26 +1,96 @@
 #include <stdio.h>
-#include <stdlib.h>
-#define MAX_SIZE 10000
-#define SWAP(x, y, t) ( (t)=(x), (x)=(y), (y)=(t) )
+#define MAXHEAP 1
+#define MINHEAP 0
+#define VOLUME 1024 
+#define SWAP(T, a, b) do {T tmp = a; a = b; b = tmp; } while(0)
 
-int list[MAX_SIZE];
-int n;
+unsigned short myrandom(unsigned short n){
 
-void heap_sort(int list[], int n)
-{
-	
+	static unsigned int rand = 0;
+	rand = rand * 1103515245 + 12345;
+	return (unsigned short) ((rand / 65536) % n);
+}
+
+void heapify(int *data, int mode, int length, int max){ // MAX HEAP
+
+	if( mode == MAXHEAP )
+	{
+		if(length < 1)
+			return;
+		int left = length * 2;
+		if(left  <= max){
+		if(data[left] > data[length]){
+			SWAP(int, data[left], data[length]);
+		}
+		}
+		int right = length * 2 + 1;
+		if(right <= max){
+		if(data[right] > data[length]){
+			SWAP(int, data[right], data[length]);
+		}	
+		}
+		heapify(data, mode, length-1, max);
+		return;
+	}
 
 }
 
-void main()
-{
-	int i;
-	n = MAX_SIZE;
-	for(i=0; i<n; i++)// 난수 생성 및 출력
-		list[i] = rand()%n;// 난수 발생 범위 0~n
-	heap_sort(list, n);// 선택 정렬 호출
-	for(i=0; i<n; i++)
-		printf("%d\n", list[i]);// 정렬 결과 출력
+void delete_in_place(int *data, int length){
+	SWAP(int, data[length], data[1]);
+}
+
+void downheap(int *data, int length, int max){
+	int left = length * 2;
+	if(left > max)
+		return;
+
+	int dest = length;
+	if(data[left] > data[length]){
+		dest = left;
+	}
+
+	int right = length * 2 + 1;
+	if(right > max){
+		if(dest != length){
+			SWAP(int, data[dest], data[length]);
+			downheap(data, dest, max);
+		}
+		return;
+	}
+
+	if(data[right] > data[dest]){
+		dest = right;
+	}
+	
+
+	if(dest == length)
+		return;
+	
+	SWAP(int, data[dest], data[length]);
+	downheap(data, dest, max);
+	return;
+}
+
+int main(){
+
+	int data[VOLUME+1];
+	for(int i = 1; i < VOLUME+1; i++){
+		data[i] = myrandom(VOLUME+1);
+	}
+
+	for(int i = 1; i < VOLUME+1; i++){
+		heapify(data, MAXHEAP, VOLUME, VOLUME);
+	}
+	
+	for(int i = 1; i < VOLUME+1; i++){
+		delete_in_place(data, VOLUME-i+1);
+		downheap(data,1,VOLUME-i);
+	}
+
+	for(int i = 1; i < VOLUME+1; ++i){
+		printf("%d \n", data[i]);
+	}
+
 }
 
 /*********************************************************************************/
