@@ -98,8 +98,7 @@ int main(){
 /*
 this will be used on complete binary tree
 
-
-
+O(nlogn)
 
 */
 
