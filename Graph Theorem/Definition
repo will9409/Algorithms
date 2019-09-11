@@ -69,10 +69,46 @@ Graph
   2. kruskal                          (direct weighted),(undirect weighted)
           
  
- 
- 
- 
- 
- 
- 
+ graph
+component
+ - it's called a connected componenet, of an undirected graph is a subgraph in which any two vertices are connected to 
+   each other by paths, and which is connected to no additional vertices in the supergraph
+connected
+ - Two nodes u and v of a directed graph are connected if there is a path from u to v and vice versa
+
+1.DFS
+  - connected component (= component)
+  In graph theory, a component, sometimes called a connected component, of an undirected graph is a subgraph 
+  in which any two vertices are connected to each other by paths, and which is connected to no additional vertices 
+  in the supergraph. For example, the graph shown in the illustration has three components. 
+  A vertex with no incident edges is itself a component. A graph that is itself connected has exactly one component, 
+  consisting of the whole graph. 
+
+  - spanning tree
+  In the mathematical field of graph theory, a spanning tree T of an undirected graph G is a subgraph 
+  that is a tree which includes all of the vertices of G, with minimum possible number of edges.
+  In general, a graph may have several spanning trees, but a graph that is not connected will not contain a spanning tree 
+  (but see Spanning forests below). If all of the edges of G are also edges of a spanning tree T of G, then G is a tree 
+  and is identical to T (that is, a tree has a unique spanning tree and it is itself). 
+
+  - biconnected component
+  In graph theory, a biconnected component (sometimes known as a 2-connected component) is a maximal biconnected subgraph. 
+  Any connected graph decomposes into a tree of biconnected components called the block-cut tree of the graph. 
+  The blocks are attached to each other at shared vertices called cut vertices or articulation points. 
+  Specifically, a cut vertex is any vertex whose removal increases the number of connected components. 
   
+  - strongly connected component
+  In the mathematical theory of directed graphs, a graph is said to be strongly connected or diconnected 
+  if every vertex is reachable from every other vertex. The strongly connected components or diconnected components of 
+  an arbitrary directed graph form a partition into subgraphs that are themselves strongly connected. 
+  It is possible to test the strong connectivity of a graph, or to find its strongly connected components, 
+  in linear time (that is, Θ(V+E)). 
+     A. property : Every directed graph is a DAG(Directed Acyclic Graph) of its strongly connected compoenets
+ 
+2.BFS
+  - single source shortest path
+  - all pair shortest path
+3.greedy
+  - kruskal
+  - prim
+
