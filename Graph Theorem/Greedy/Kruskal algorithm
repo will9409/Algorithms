@@ -1,1 +1,22 @@
 
+/*********************************************************************************/
+1. Sort all the edges of a graph and list them in the ascending order of weights
+2. Choose the edge of the minimum cost from the sorted list, and add it to the minimum cost tree T, if it doesn't make a cycle
+3. Repeat this process until T has (n - 1) edges or the sorted list becomes empty
+
+Performance analysis
+1. Sorting edges : O( |E| log |E| )
+2. Adding edges : O( |V| )
+  2.1 Check cycles : O( |V| )
+  
+How to improve performances?
+ - Use UNION-FIND operations for checking cycles
+ - Assign labels on the vertices for UNION-FIND
+   1. Forest-based implementation
+   2. UNION -> O(1)
+   3. FIND -> O(log n)
+   
+   
+Another version of kruskal's algorithm
+  - Checking cycles by labeling vertices
+    If two vertices have same labels, then adding the edge that connects the two vertices becomea s cycle
