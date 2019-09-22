@@ -1,1 +1,8 @@
 
+/***************************************************************************************/
+Single source all destination shortest path
+Directed graph
+non-negative edge
+
+Performance analysis
+1. inserting n element to a queue
