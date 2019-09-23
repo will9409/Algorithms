@@ -1,1 +1,31 @@
 
+void floyd(int cost[][], int dist[][], int n)
+{
+	for(int i = 0; i < n; i++)
+		for(int j = 0; j < n; j++)
+			dist[i][j] = cost[i][j];
+
+	for(int k = 0; k < n; k++)
+		for(int i = 0; i < n; i++)
+			for(int j = 0; j < n; j++)
+				if(dist[i][k] + dist[k][j] < dist[i][j])
+					dist[i][j] = dist[i][k] + dist[k][j];
+
+}
+/***************************************************************************************/
+- Input: adjacency matrix of a graph
+- The weight of a path between two vertices is the sum of the weights of the edges along that path
+- negative wweight is allowed
+- negative cycle is not allowed
+
+A^k[i][j]
+ - the cost of the shortest path from vertex i to j, using only  those intermediate vertices with an index < k
+ 
+A^-1[i][j]
+ - the weight of an edge connecting vertex i and vertex j
+ 
+ Basic idea:
+ - starting from A^-1, successively generate the matrices to A^1, A^2, ... , A^n.
+ - A^k[i][j] = min{ A^k-1[i][j], A^k-1[i][k] + A^k-1[k][j]}
+ - A^-1[i][j] = cost[i][j]
+ 
