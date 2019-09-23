@@ -1,0 +1,15 @@
+/***************************************************************************************/
+Minimum cost spanning tree
+- computed on a weighted graph
+- A spanning tree whose sum of edge weight is minimum
+- Properties
+  * No new edges
+  * (n-1) edges for |V| = n
+  * No cycle
+
+Spanning tree
+- Connecting every vertex of a graph G using minimum number of edges
+- If |V| = n, then at least (n-1) edes are required
+- Depth-first spanning tree
+- Breadth-first spanning tree
+
