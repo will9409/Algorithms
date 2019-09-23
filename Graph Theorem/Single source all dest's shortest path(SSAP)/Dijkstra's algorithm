@@ -104,4 +104,14 @@ Directed graph
 non-negative edge
 
 Performance analysis
-1. inserting n element to a queue
+1. inserting n elements to a queue O(n)
+2. finding/deleting minimum from a queue O(n^2)
+3. modifying the queue O(m)
+Time complexity: O(n^2)
+
+Fredman and Tarjan proposed a Fibonacci heap to improve Dijkstras algrithm(1984)
+  - Fibonacci heap: a kind of min binary heap
+1. O(n)
+2. O(log n)
+3. O(m)
+Time complexity: O(m) + O(n log n)
