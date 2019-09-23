@@ -1,0 +1,22 @@
+Greedy algorithm
+- The most straightforward design technique to solve a problem
+  * n inputs
+  * Requires to obtain a subset that satisfies some constraints
+- An algorithm that works in stages, considering one input at a time
+
+Terms
+- Solution
+  * A set of all imaginable methods to a given problem without considering the possibilities and feasibilities
+- Constraints
+  * physical considerations that restrict the set of solutions
+- Feasible solution
+  * Any subset that satisfies the constraints
+- Objective function    (    ... -> optimal)
+  * A set of functions that measure the satisfaction of the solution
+  * The measurement can be either profit(to maximize) or cost(to minimize)
+- Optimal solution
+  * A feasible solution that optimizes(maximizes or minimizes) the objective function
+
+Selection
+- At each stage, a decision is mad regarding whether or not a particular input is in an optimal solution
+- Selection criteria is based on optimization measure
