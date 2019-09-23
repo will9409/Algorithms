@@ -1,4 +1,103 @@
+#include <iostream>
+#include <vector>
+#define VERTICES_SIZE 6
+#define EDGE_SIZE 10
+#define INF 9876543
 
+using namespace std;
+
+vector<vector<int>> edge(VERTICES_SIZE, vector<int>(EDGE_SIZE,INF));
+int d[VERTICES_SIZE];
+int visit[VERTICES_SIZE];
+
+int findMin(int s)
+{
+	int index = -1;
+
+	for(int i = 0; i < VERTICES_SIZE; i++){
+		if( visit[i] == 1 || i == s ){
+			continue;
+		}else{
+			if(index == -1)
+				index = i;
+
+			if(d[i] < d[index]){
+				index = i;
+			}
+		}
+	}
+	return index;
+}
+
+bool chkIfBlocked(int loc)
+{
+	for(int i = 0; i < edge[loc].size(); i++){
+		if(edge[loc][i] != INF)
+			return 0;
+	}
+	return 1;
+}
+
+void Dijkstra(int s)
+{
+	printf("s = %d\n", s);
+
+	visit[s] = 1;
+	for(int i = 0 ; i < VERTICES_SIZE; i++)
+	{
+		if(i != s)
+			if(edge[s][i] + d[s] < d[i]){
+				d[i] = edge[s][i] + d[s];
+			}
+	}
+
+	if(s == VERTICES_SIZE - 1)
+		return;
+
+	for(int i = 0; i < VERTICES_SIZE; i++)
+		printf("%d\n",d[i]);
+
+	if(chkIfBlocked(s) == 1)
+	{
+		int tmp = -1;
+		for(int i = 0 ; i < VERTICES_SIZE; i++){
+			if(visit[i] == 0)
+				tmp = s;	
+		}
+		if(tmp == -1)
+			return;
+
+	}
+			
+
+	Dijkstra(findMin(s));
+
+}
+
+
+int main()
+{
+	int v, e, w, s;
+	for(int i = 0; i < VERTICES_SIZE; i++){
+		d[i] = INF;
+		visit[i] = 0;
+	}
+	for(int i = 0 ; i < EDGE_SIZE; i++)
+	{
+		scanf("%d %d %d",&v, &e, &w);
+		edge[v][e] = w;
+	}
+
+	scanf("%d",&s);
+	d[s] = 0; // start node itself, distance = 0
+	printf("/**********start**********/\n");
+	Dijkstra(s);
+	printf("/**********done***********/\n");
+	for(int i = 0; i < VERTICES_SIZE; i++)
+		printf("%d\n",d[i]);
+
+
+}
 /***************************************************************************************/
 Single source all destination shortest path
 Directed graph
