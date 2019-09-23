@@ -1,1 +1,11 @@
-
+1. Set an alarm clock for node s at time 0
+2. Repeat until there are no more alarms.
+3. If the next alarm goes off at time T for node u,
+ 3.1 The distance from s to u is T.
+ 3.2 For each neighbor v of u
+  3.2.1 If no alarm set to v, then set as T + l(u, v).
+  3.2.2 If v's alarm > T + l(u, v), then set v's alarm as T + l(u, v).
+   - Edge relaxation(principle of relaxation)
+   
+An approximation to the correct distance is gradually replaced by more accurate values until eventually reaching
+the optimum solution.
