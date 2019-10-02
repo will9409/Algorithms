@@ -96,7 +96,7 @@ int main(){
 /*********************************************************************************/
 //performance analysis
 /*
-this will be used on complete binary tree
+this will be used in complete binary tree
 
 O(nlogn)
 
