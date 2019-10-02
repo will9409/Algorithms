@@ -18,5 +18,5 @@ Terms
   * A feasible solution that optimizes(maximizes or minimizes) the objective function
 
 Selection
-- At each stage, a decision is mad regarding whether or not a particular input is in an optimal solution
+- At each stage, a decision is made regarding whether or not a particular input is in an optimal solution
 - Selection criteria is based on optimization measure
