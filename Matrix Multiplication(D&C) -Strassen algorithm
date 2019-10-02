@@ -23,7 +23,7 @@ Multiplying two matrices: Z = XY
       
       
            |A   B||E   F|    |AE + BG    AF + BH|
-  Z = XY = |     ||     |  = 
+  Z = XY = |     ||     |  = |                  |
            |C   D||G   H|    |CE + DG    CF + DH|   
     
   - 8(n/2) x (n/2) multiplications
