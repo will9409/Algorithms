@@ -25,7 +25,7 @@ void bfs(int s)
               now = q.front();
               q.pop();
               printf("%d ",now);
-              for ( k = 0; i < edge[now].size();k++){
+              for ( k = 0;  < edge[now].size();k++){
                     next = edge[now][k];
                     if( visit[next] == false){
                         visit[next] = true;
