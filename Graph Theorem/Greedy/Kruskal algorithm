@@ -1,3 +1,131 @@
+#include <stdio.h>
+#include "queue.c"
+
+#define MAX_VERTICES 1000
+#define MAX_EDGES 1000
+#define SWAP(T, a, b) do {T tmp = a; a = b; b = tmp;}while(0)
+
+int partition(int s, int e, int *data1, int *data2, int *data3)
+{
+	int left, right;
+	left = s;
+	right = e;
+
+	while(s <= e){
+		while(data3[s] >= data3[left++] && left <= right)
+			left ++;
+		while(data3[s] <= data3[right--] && left <= right)
+			right--;
+
+		if(left <= right){
+			SWAP(int, data1[left], data1[right]);
+			SWAP(int, data2[left], data2[right]);
+			SWAP(int, data3[left], data3[right]);
+		}
+	}
+	SWAP(int, data1[s], data1[right]);
+	SWAP(int, data2[s], data2[right]);
+	SWAP(int, data3[s], data3[right]);
+
+	return right;
+}
+
+void qsort2(int s, int e, int *data1, int *data2, int *data3)
+{
+	if(s >= e)
+		return;
+
+	int m = partition(s, e, data1, data2, data3);
+
+	qsort2(s, m-1, data1, data2, data3);
+	qsort2(m+1, e, data1, data2, data3);
+
+}
+
+int bfs(DequeType *dq, int s, int *vis){
+	DequeType edq;
+	int now, k, next;
+
+	add_rear(&edq, get_front(&dq[s]));
+
+	vis[get_rear(&edq)] = 1;
+
+	while(!is_empty(&edq)){
+		now = delete_front(&edq);
+		int qsize = get_size(&dq[now]);
+		
+		DlinkNode *nodep = dq[now].head;
+
+		for(k = 0; k < qsize; k++){
+			nodep = nodep->rlink;
+			next = nodep->data;
+			if(vis[next] == 0){
+				vis[next] = 1;
+				add_rear(&edq, next);
+			}
+			else if(vis[next] == 1)
+				return 1;
+		}
+
+
+	}
+	return 0;
+}
+
+void initVisit(int *vis, int size){
+	for(int i = 0; i < size; i++){
+	vis[i] = 0;	
+	}
+}
+
+int main()
+{
+	int v[MAX_VERTICES];
+	int e[MAX_EDGES];
+	int w[MAX_EDGES];
+	int vinit = 0;
+	int einit = 0;
+	int visit[MAX_VERTICES] = {0,};
+
+	DequeType deq;
+	DequeType edge[MAX_EDGES];
+	deq.head = NULL;
+	deq.tail = NULL;
+
+
+	for(int i = 0; i < MAX_VERTICES; i++){
+		v[i] = 999;
+	}
+	for(int i = 0; i < MAX_EDGES; i++){
+		e[i] = 999;
+		w[i] = 999;
+	}
+
+	scanf("%d %d", &vinit, &einit);
+
+	for(int i = 0; i < einit; i++){
+		scanf("%d %d %d",&v[i],&e[i],&w[i]);
+	}
+
+	qsort2(0,MAX_EDGES,v,e,w);
+
+	for(int i = 0 ; i < einit; i++){
+		add_rear(&edge[v[i]], e[i]);
+		for(int j = 0; j < i; j++){
+			if(bfs(edge, v[j], visit) == 1){
+				delete_rear(&edge[v[i]]);
+			}
+			initVisit(visit, MAX_VERTICES);
+		}
+	}
+
+	for(int i = 0; i < einit; i++){
+		if(edge[i].head != NULL){
+			print_all(&edge[i]);
+		}
+	}
+}
+
 
 /*********************************************************************************/
 1. Sort all the edges of a graph and list them in the ascending order of weights
