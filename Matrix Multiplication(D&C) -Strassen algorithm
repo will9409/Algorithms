@@ -15,7 +15,7 @@ Multiplying two matrices: Z = XY
   
   
   Improve the performance using DnC
-  - Divide X & Y int 2 x 2 groups
+  - Divide X & Y into 2 x 2 groups
   
       A   B                E   F
   X =                Y = 
