@@ -1,0 +1,19 @@
+#include <stdio.h>
+#define FIB_MAX 100
+
+int fib(int n)
+{
+   if(n < 2)
+    return a[n];
+    
+   if( a[n] != 0)
+    return a[n];
+    
+   return a[n] = fib(n-1) + fib(n-2);
+}
+
+int main()
+{
+  int a[FIB_MAX] = {0, 1, };
+  printf("%d\n",fib(n));
+}
